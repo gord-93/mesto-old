@@ -1,0 +1,11 @@
+.two-columns__main-text {
+    width: 80%;
+    min-width: 784px;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.two-columns__main-text :last-child {
+    margin: 0;
+}
