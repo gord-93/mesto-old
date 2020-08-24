@@ -1,4 +1,9 @@
 .profile {
-    max-width: 882px;
-    
+    width: 882px;
+    min-height: 120px;
+    margin: 40px auto 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #ffffff;
 }
