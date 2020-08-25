@@ -10,3 +10,15 @@
     margin-left: 17px;
     align-self: flex-end;
 }
+
+.profile__edit-button:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    filter: opacity(0.6);
+}
+
+@media screen and (max-width: 767px) {
+    .profile__edit-button {
+        margin-left: 7px
+    }
+}
+

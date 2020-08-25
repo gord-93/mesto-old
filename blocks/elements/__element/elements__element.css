@@ -4,3 +4,9 @@
     height: 361px;
     border-radius: 10px;
 }
+
+@media screen and (max-width: 767px) {
+    .elements__element {
+        margin: 20px auto 0;
+    }
+}
