@@ -6,5 +6,19 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
-    margin: 48px 36px 36.51px;
+    margin: 48px 0 36.51px;
+    border-radius: 2px;
+    border-style: none;
+}
+
+.popup__save-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+@media screen and (max-width: 768px) {
+    .popup__save-button {
+        width: 280px;
+        margin: 20px 10px 15px;
+    }
 }
