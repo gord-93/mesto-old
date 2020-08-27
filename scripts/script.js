@@ -9,6 +9,9 @@ let popupForm = popup.querySelector('.popup__form');
 let popupTextName = popupForm.querySelector('.popup__text-name');
 let popupTextAbout = popupForm.querySelector('.popup__text-about');
 let submitButton = popupForm.querySelector('.popup__save-button');
+let elements = document.querySelector('.elements');
+let element = elements.querySelector('.elements__element');
+let likeButton = element.querySelector('.elements__like-button');
 
 function popupOpen() {
     popup.classList.add('popup_opened');
@@ -34,3 +37,4 @@ function submitProfileInfo(evt) {
 }
 
 popupForm.addEventListener("submit", submitProfileInfo);
+

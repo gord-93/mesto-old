@@ -5,8 +5,11 @@
     height: 18.13px;
     border: none;
     margin-right: 17px;
+    background-color: #ffffff;
 }
 
 .elements__like-button:hover {
     filter: opacity(0.6);
+    background-image: url(../../../images/elements-like-pic-red.svg);
 }
+
