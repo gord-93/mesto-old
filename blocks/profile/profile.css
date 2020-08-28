@@ -6,6 +6,7 @@
     justify-content: flex-start;
     align-items: center;
     color: #ffffff;
+    position: relative;
 }
 
 @media screen and (max-width: 1023px) {

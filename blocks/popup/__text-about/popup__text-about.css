@@ -7,8 +7,9 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .popup__text-about {
-        width: 280px;
+        width: 276px;
+        margin: 25px 10px 0;
     }
 }

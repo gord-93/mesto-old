@@ -1,4 +1,3 @@
-let page = document.querySelector('.page');
 let profile = document.querySelector('.profile');
 let editProfileButton = profile.querySelector('.profile__edit-button');
 let profileName = profile.querySelector('.profile__name');
@@ -9,9 +8,6 @@ let popupForm = popup.querySelector('.popup__form');
 let popupTextName = popupForm.querySelector('.popup__text-name');
 let popupTextAbout = popupForm.querySelector('.popup__text-about');
 let submitButton = popupForm.querySelector('.popup__save-button');
-let elements = document.querySelector('.elements');
-let element = elements.querySelector('.elements__element');
-let likeButton = element.querySelector('.elements__like-button');
 
 function popupOpen() {
     popup.classList.add('popup_opened');
@@ -22,7 +18,7 @@ function popupOpen() {
 editProfileButton.addEventListener('click', popupOpen);
 
 function popupClosed() {
-    popup.classList.remove('popup_opened')
+    popup.classList.remove('popup_opened');
 }
 
 closeButton.addEventListener('click', popupClosed);
@@ -33,7 +29,7 @@ function submitProfileInfo(evt) {
     let aboutInput = popupTextAbout.value;
     profileName.textContent = nameInput;
     profileAbout.textContent = aboutInput;
-    popupClose();
+    popupClosed();
 }
 
 popupForm.addEventListener("submit", submitProfileInfo);

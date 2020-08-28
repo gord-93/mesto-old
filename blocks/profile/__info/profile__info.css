@@ -11,8 +11,8 @@
         max-width: 580px;
         margin-left: 20px;
         margin-right: 20px;
-        flex-direction: column;
         margin-top: 20px;
+        justify-content: center;
     }
 }
 
@@ -22,7 +22,6 @@
         margin-top: 14px;
         margin-left: 0;
         margin-right: 0;
-        flex-direction: column;
         justify-content: center;
     }
 }
