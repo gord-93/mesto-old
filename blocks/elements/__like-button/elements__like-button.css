@@ -6,6 +6,7 @@
     border: none;
     margin-right: 17px;
     background-color: #ffffff;
+    cursor: pointer;
 }
 
 .elements__like-button:hover {

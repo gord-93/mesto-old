@@ -70,10 +70,10 @@
     </footer>
     <div class="popup">
         <div class="popup__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form">
-                <input type="text" class="popup__text-name" placeholder="Имя">
-                <input type="text" class="popup__text-about" placeholder="О себе">
+            <h3 class="popup__title">Редактировать профиль</h3>
+            <form class="popup__form" method="POST" name="popupForm">
+                <input type="text" class="popup__text-name" placeholder="Имя" name="popupTextName">
+                <input type="text" class="popup__text-about" placeholder="О себе" name="popupTextAbout">
                 <button type="submit" class="popup__save-button">Сохранить</button>
             </form>
             <button class="popup__close-button" name="popup__close-button"></button>

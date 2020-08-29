@@ -6,10 +6,11 @@
     box-sizing: border-box;
     border-radius: 2px;
     background-image: url(../../../images/profile-add-button.svg);
+    background-size: 22px;
     background-repeat: no-repeat;
     background-position: center;
-    position: absolute;
-    right: 0;
+    margin-left: auto;
+    cursor: pointer;
 }
 
 .profile__add-button:hover {
@@ -21,7 +22,6 @@
     .profile__add-button {
         width: 282px;
         margin-left: 0;
-        position: relative;
     }
 }
 
@@ -30,7 +30,7 @@
         width: 282px;
         margin-left: 0;
         margin-top: 36px;
-        position: relative;
+        background-size: 16px;
     }
 }
 
