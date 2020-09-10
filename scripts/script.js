@@ -18,6 +18,8 @@ let cardCreateButton = document.querySelector('.popup__save-button_card');
 let nameCard = document.querySelector('.popup__text-name_card');
 let linkCard = document.querySelector('.popup__link');
 let resetButton = document.querySelector('.elements__reset-button');
+let fullImage = document.querySelector('.full-image');
+
 
 
 const initialCards = [
@@ -103,8 +105,6 @@ addCardButton.addEventListener('click', function() {
     linkCard.value = "";
     popupCardFormOnOff();
 });
-
-
 
 closeButton.addEventListener('click', popupEditProfileOnOff);
 popupForm.addEventListener('submit', submitProfileInfo);
