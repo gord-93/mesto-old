@@ -11,6 +11,5 @@
 
 .elements__like-button:hover {
     filter: opacity(0.6);
-    background-image: url(../../../images/elements-like-pic-red.svg);
 }
 
