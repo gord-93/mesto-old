@@ -4,23 +4,23 @@ let editProfileButton = profile.querySelector('.profile__edit-button');
 let addCardButton = profile.querySelector('.profile__add-button');
 let profileName = profile.querySelector('.profile__name');
 let profileAbout = profile.querySelector('.profile__about');
+let elements = document.querySelector('.elements');
 let popup = page.querySelector('.popup');
 let closeButton = popup.querySelector('.popup__close-button');
 let popupForm = popup.querySelector('.popup__form');
 let popupTextName = popupForm.querySelector('.popup__text-name');
 let popupTextAbout = popupForm.querySelector('.popup__text-about');
 let closeFormButton = document.querySelector('.popup__close-button_card');
-let elements = document.querySelector('.elements');
-let cardCreateButton = document.querySelector('.popup__save-button_card');
 let nameCard = document.querySelector('.popup__text-name_card');
 let linkCard = document.querySelector('.popup__link');
 let popupProfileEdit = document.querySelector('.popup__profile-edit');
 let cardForm = document.querySelector('.popup__card-form');
 let fullscreenCard = document.querySelector('.popup__fullscreen');
-let cardTemplate = document.querySelector('#card-template');
 let closeFullscreenButton = document.querySelector('.popup__close-button_fullscreen');
 let newCardForm = document.querySelector('.popup__newcard-form');
 let cardInputText = document.querySelector('.popup__text-name_card');
+let cardTemplate = document.querySelector('#card-template');
+
 
 
 
