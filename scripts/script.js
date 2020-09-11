@@ -110,3 +110,4 @@ closeButton.addEventListener('click', popupEditProfileOnOff);
 popupForm.addEventListener('submit', submitProfileInfo);
 closeFormButton.addEventListener('click', popupCardFormOnOff);
 cardCreateButton.addEventListener('click', addCard);
+

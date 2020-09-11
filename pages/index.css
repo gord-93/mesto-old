@@ -37,5 +37,5 @@
 @import url(../blocks/full-image/__image/full-image__image.css);
 @import url(../blocks/full-image/__title/full-image__title.css);
 @import url(../blocks/full-image/_opened/full-image_opened.css);
-@import url(../blocks/elements/__fullscreen-button/elements__fullscreen-button.css);
+@import url(../blocks/full-image/__close-button/full-image__close-button.css);
 

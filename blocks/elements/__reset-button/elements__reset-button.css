@@ -2,13 +2,13 @@
     background: none;
     border: none;
     background-image: url(../../../images/elements-reset-button.svg);
+    background-repeat: no-repeat;
     width: 18px;
     height: 19.3px;
     position: absolute;
     top: 18px;
     right: 15px;
     cursor: pointer;
-    z-index: 1;
 }
 
 .elements__reset-button:hover {
