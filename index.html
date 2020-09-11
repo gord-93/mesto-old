@@ -21,54 +21,12 @@
             <button type="button" class="profile__add-button"></button>
         </section> 
         <section class="elements">
-            <!--<div class="elements__element">
-                <img src="images/elements-karachaevsk.png" alt="Изображение Карачаевска" class="elements__image">
-                <div class="elements__about">
-                    <h2 class="elements__title">Карачаевск</h2>
-                    <button type="button" class="elements__like-button"></button>
-                </div>
-            </div>
-            <div class="elements__element">
-                <img src="images/elements-gora-elbrus.png" alt="Изображение Горы Эльбрус" class="elements__image">
-                <div class="elements__about">
-                    <h2 class="elements__title">Гора Эльбрус</h2>
-                    <button type="button" class="elements__like-button"></button>
-                </div>
-            </div>
-            <div class="elements__element">
-                <img src="images/elements-dombai.png" alt="Изображение Домбай" class="elements__image">
-                <div class="elements__about">
-                    <h2 class="elements__title">Домбай</h2>
-                    <button type="button" class="elements__like-button"></button>
-                </div>
-            </div>
-            <div class="elements__element">
-                <img src="images/elements-gora-elbrus.png" alt="Изображение Горы Эльбрус" class="elements__image">
-                <div class="elements__about">
-                    <h2 class="elements__title">Гора Эльбрус</h2>
-                    <button type="button" class="elements__like-button"></button>
-                </div>
-            </div>
-            <div class="elements__element">
-                <img src="images/elements-dombai.png" alt="Изображение Домбай" class="elements__image">
-                <div class="elements__about">
-                    <h2 class="elements__title">Домбай</h2>
-                    <button type="button" class="elements__like-button"></button>
-                </div>
-            </div>
-            <div class="elements__element">
-                <img src="images/elements-karachaevsk.png" alt="Изображение Карачаево-Черкеска" class="elements__image">
-                <div class="elements__about">
-                    <h2 class="elements__title">Карачаево-Черкеск</h2>
-                    <button type="button" class="elements__like-button"></button>
-                </div>
-            </div>-->
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup__profile-edit">
         <div class="popup__container">
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form" method="POST" name="popupForm">
@@ -79,10 +37,10 @@
             <button type="reset" class="popup__close-button" name="popup__close-button"></button>
         </div>
     </div>
-    <div class="popup popup__card">
+    <div class="popup popup__card-form">
         <div class="popup__container">
             <h3 class="popup__title">Новое место</h3>
-            <form class="popup__form" method="POST" name="popupForm">
+            <form class="popup__form popup__newcard-form" method="POST" name="popupForm">
                 <input type="text" class="popup__text-name popup__text-name_card" placeholder="Название" name="popupTextNameCard" value="">
                 <input type="text" class="popup__link" placeholder="Ссылка на картинку" name="popupLink" value="">
                 <button type="submit" class="popup__save-button popup__save-button_card">Создать</button>
@@ -90,11 +48,11 @@
             <button type="reset" class="popup__close-button popup__close-button_card" name="popup__close-button"></button>
         </div>
     </div>
-    <div class="full-image">
-        <div class="full-image__container">
-        <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg" alt="#" class="full-image__image">
-        <p class="full-image__title">kamchatka</p>
-        <button type="reset" class="full-image__close-button"></button>
+    <div class="popup popup__fullscreen">
+        <div class="popup__card-container">
+        <img src="" alt="#" class="popup__image">
+        <p class="popup__image-title"></p>
+        <button type="reset" class="popup__close-button popup__close-button_fullscreen"></button>
         </div>
     </div>
     <template id="card-template">
