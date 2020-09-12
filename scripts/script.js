@@ -1,25 +1,23 @@
-let page = document.querySelector('.page');
-let profile = document.querySelector('.profile');
-let editProfileButton = profile.querySelector('.profile__edit-button');
-let addCardButton = profile.querySelector('.profile__add-button');
-let profileName = profile.querySelector('.profile__name');
-let profileAbout = profile.querySelector('.profile__about');
-let elements = document.querySelector('.elements');
-let popup = page.querySelector('.popup');
-let closeButton = popup.querySelector('.popup__close-button');
-let popupForm = popup.querySelector('.popup__form');
-let popupTextName = popupForm.querySelector('.popup__text-name');
-let popupTextAbout = popupForm.querySelector('.popup__text-about');
-let closeFormButton = document.querySelector('.popup__close-button_card');
-let nameCard = document.querySelector('.popup__text-name_card');
-let linkCard = document.querySelector('.popup__link');
-let popupProfileEdit = document.querySelector('.popup__profile-edit');
-let cardForm = document.querySelector('.popup__card-form');
-let fullscreenCard = document.querySelector('.popup__fullscreen');
-let closeFullscreenButton = document.querySelector('.popup__close-button_fullscreen');
-let newCardForm = document.querySelector('.popup__newcard-form');
-let cardInputText = document.querySelector('.popup__text-name_card');
-let cardTemplate = document.querySelector('#card-template');
+const profile = document.querySelector('.profile');
+const editProfileButton = profile.querySelector('.profile__edit-button');
+const addCardButton = profile.querySelector('.profile__add-button');
+const profileName = profile.querySelector('.profile__name');
+const profileAbout = profile.querySelector('.profile__about');
+const elements = document.querySelector('.elements');
+const popup = document.querySelector('.popup');
+const closeButton = popup.querySelector('.popup__close-button');
+const popupForm = popup.querySelector('.popup__form');
+const popupTextName = popupForm.querySelector('.popup__text-name');
+const popupTextAbout = popupForm.querySelector('.popup__text-about');
+const closeFormButton = document.querySelector('.popup__close-button_card');
+const cardName = document.querySelector('.popup__text-name_card');
+const cardLink = document.querySelector('.popup__link');
+const popupProfileEdit = document.querySelector('.popup__profile-edit');
+const cardForm = document.querySelector('.popup__card-form');
+const fullscreenCard = document.querySelector('.popup__fullscreen');
+const closeFullscreenButton = document.querySelector('.popup__close-button_fullscreen');
+const newCardForm = document.querySelector('.popup__newcard-form');
+const cardTemplate = document.querySelector('#card-template');
 
 
 
@@ -68,16 +66,17 @@ function submitProfileInfo(evt) {
     popupClose(popupProfileEdit);
 }
 
-function addCard(cardtitle, imageSrc) {
+function addCard(cardTitle, imageSrc) {
     const cardElement = cardTemplate.cloneNode(true).content;
     const cardPicture = cardElement.querySelector('.elements__image');
-    cardElement.querySelector('.elements__title').textContent = cardtitle;
+    cardElement.querySelector('.elements__title').textContent = cardTitle;
     cardPicture.src = imageSrc;
+    cardPicture.alt = cardTitle;
     cardPicture.addEventListener('click', function() {
         const fullscreenImage = document.querySelector('.popup__image');
         const fullscreenTitle = document.querySelector('.popup__image-title');
         fullscreenImage.src = imageSrc;
-        fullscreenTitle.textContent = cardtitle;
+        fullscreenTitle.textContent = cardTitle;
         popupOpen(fullscreenCard);
     });
     cardElement.querySelector('.elements__like-button').addEventListener('click', function (evt) {
@@ -97,7 +96,7 @@ initialCards.forEach(function(item) {
 
 newCardForm.addEventListener("submit", function(evt) {
     evt.preventDefault();
-    addCard(cardInputText.value, linkCard.value);
+    addCard(cardName.value, cardLink.value);
     popupClose(cardForm);
 });
 
@@ -108,8 +107,8 @@ editProfileButton.addEventListener('click', function() {
 });
 
 addCardButton.addEventListener('click', function() {
-    nameCard.value = "";
-    linkCard.value = "";
+    cardName.value = "";
+    cardLink.value = "";
     popupOpen(cardForm);
 });
 
