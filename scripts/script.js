@@ -77,6 +77,7 @@ function addCard(cardTitle, imageSrc) {
         const fullscreenTitle = document.querySelector('.popup__image-title');
         fullscreenImage.src = imageSrc;
         fullscreenTitle.textContent = cardTitle;
+        fullscreenImage.alt = cardTitle;
         popupOpen(fullscreenCard);
     });
     cardElement.querySelector('.elements__like-button').addEventListener('click', function (evt) {
