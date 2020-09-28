@@ -1,0 +1,5 @@
+.popup__input_error_active {
+    display: block;
+    color: red;
+}
+

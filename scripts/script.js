@@ -48,13 +48,23 @@ const initialCards = [
     }
 ];
 
-function popupOpen(popup) {
-    popup.classList.add('popup_opened');
+const escButtonActivated = (popup) => {
     document.addEventListener('keydown', function(evt) {
         if (evt.key === "Escape") {
             popupClose(popup);
         }
     });
+}
+
+const escButtonDeactivated = (popup) => {
+    document.removeEventListener('keydown', function(evt) {
+        if (evt.key === "Escape") {
+            popupClose(popup);
+        }
+    });
+}
+
+const overlayPopupClose = (popup) => {
     popup.addEventListener('click', function(evt) {
         if (evt.target.classList.contains('popup')) {
             popupClose(popup);
@@ -62,18 +72,15 @@ function popupOpen(popup) {
     });
 }
 
+function popupOpen(popup) {
+    popup.classList.add('popup_opened');
+    escButtonActivated(popup);
+    overlayPopupClose(popup);
+}
+
 function popupClose(popup) {
     popup.classList.remove('popup_opened');
-    popup.removeEventListener('click', function(evt) {
-        if (evt.target.classList.contains('popup')) {
-            popupClose(popup);
-        }
-    });
-    document.removeEventListener('keydown', function(evt) {
-        if (evt.key === "Escape") {
-            popupClose(popup);
-        }
-    });
+    escButtonDeactivated(popup);
 }
 
 function submitProfileInfo(evt) {
