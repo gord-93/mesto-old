@@ -21,7 +21,6 @@ const cardTemplate = document.querySelector('#card-template');
 const popupContainer = document.querySelector('.popup__container');
 const popupFormProfile = document.querySelector('.popup__form-profile');
 
-
 const initialCards = [
     {
         name: 'Байкал',
