@@ -37,6 +37,6 @@
 @import url(../blocks/popup/__card-container/popup__card-container.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__input/_error/popup__input_error.css);
-@import url(../blocks/popup/__input/_error/_active/popup__input_error_active.css);
-@import url(../blocks/popup/__input/_error/_border/popup__input_error_border.css);
-@import url(../blocks/popup/__save-button/_off/popup__save-button_off.css);
+@import url(../blocks/popup/__input/_error/_visible/popup__error_visible.css);
+@import url(../blocks/popup/__input/_type/_error/popup__input_type_error.css);
+@import url(../blocks/popup/__save-button/_disabled/popup__save-button_disabled.css);
