@@ -24,7 +24,6 @@ const fullscreenImage = document.querySelector('.popup__image');
 const fullscreenTitle = document.querySelector('.popup__image-title');
 const errors = Array.from(document.querySelectorAll('.popup__input_error'));
 const inputSelector = Array.from(document.querySelectorAll('.popup__input'));
-
 const initialCards = [
     {
         name: 'Байкал',
@@ -54,14 +53,14 @@ const initialCards = [
 
 function popupOpen(popup) {
     popup.classList.add('popup_opened');
-    document.addEventListener('keydown', function(evt) {escClosePopup(evt, popup)});
-    popup.addEventListener('click', function(evt) {overlayClosePopup(evt, popup)});
+    document.addEventListener('keydown', escClosePopup);
+    popup.addEventListener('click', overlayClosePopup);
 }
 
 function popupClose(popup) {
     popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', function(evt) {escClosePopup(evt, popup)});
-    popup.removeEventListener('click', function(evt) {overlayClosePopup(evt, popup)});
+    document.removeEventListener('keydown', escClosePopup);
+    popup.removeEventListener('click', overlayClosePopup);
     removeErrors();
 }
 
@@ -94,15 +93,17 @@ function addCard(cardTitle, imageSrc) {
     elements.prepend(cardElement);
 };
 
-function escClosePopup(evt, popup) {
+function escClosePopup(evt) {
+    const openedPopup = document.querySelector('.popup_opened');
     if (evt.key === 'Escape') {
-        popupClose(popup);
+        popupClose(openedPopup);
     };
 }
 
-function overlayClosePopup(evt, popup) {
+function overlayClosePopup(evt) {
+    const openedPopup = document.querySelector('.popup_opened');
     if (evt.target.classList.contains('popup')) {
-    popupClose(popup);
+        popupClose(openedPopup);
     };
 }
 
