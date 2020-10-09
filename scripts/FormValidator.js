@@ -8,23 +8,23 @@ export default class FormValidator {
         this._errorClass = allClasses.errorClass;
     }
     _formValidation = () => {
-        const formValid = this._validatedForm;
-        return formValid;
+        const form = this._validatedForm;
+        return form;
     }
     _activeSubmitButton = () => {
-        const button = this._element.querySelector(this._submitButtonSelector);
-        button.classList.add(this.__inactiveButtonClass);
-        button.removeAttribute('disabled');
+        const buttonElement = this._element.querySelector(this._submitButtonSelector);
+        buttonElement.classList.remove(this.__inactiveButtonClass);
+        buttonElement.removeAttribute('disabled');
     }
     _disabledSubmitButton = () => {
-        const button = this._element.querySelector(this._submitButtonSelector);
-        button.classList.add(this.__inactiveButtonClass);
-        button.setAttribute('disabled', 'true');
+        const buttonElement = this._element.querySelector(this._submitButtonSelector);
+        buttonElement.classList.add(this.__inactiveButtonClass);
+        buttonElement.setAttribute('disabled', 'true');
     }
     _showInputError = (inputElement) => {
         const errorElement = this._element.querySelector(`#${inputElement.id}-error`);
         inputElement.classList.add(this._inputErrorClass);
-        errorElement.textContent = inputElement.validationMessage;
+        errorElement.textContent = inputElement.inputErrorMessage;
         errorElement.classList.add(this._errorClass);
     };
     
@@ -37,9 +37,9 @@ export default class FormValidator {
     _checkInputValidity = (inputElement) => {
         const isInputNotValid = !inputElement.validity.valid;
         if (isInputNotValid) {
-            showInputError(this.inputElement);
+            showInputError(inputElement);
         } else {
-            hideInputError(this.inputElement);
+            hideInputError(inputElement);
         }
     };
     _hasInvalidInput = () => {
