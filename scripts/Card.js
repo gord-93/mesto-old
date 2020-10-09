@@ -1,10 +1,11 @@
-import {closeButton, fullscreenImage, fullscreenTitle, popupOpen, popupClose, fullscreenCard} from './index.js';
+import {closeButton, fullscreenImage, fullscreenTitle, popupOpen, popupClose, fullscreenCard, closeFullscreenButton} from './index.js';
 
 export default class Card {
     constructor(data, cardSelector) {
-        this.title = data.title;
-        this.imageLink = data.imageLink;
+        this.title = data.name;
+        this.imageLink = data.link;
         this._cardSelector = cardSelector;
+        this.isLiked = false;
     }
     _getTemplate = () => {
         const cardElement = document.querySelector(this._cardSelector)
@@ -21,12 +22,17 @@ export default class Card {
         return this._element;
     }
     _like = () => {
-        this._element.querySelector('.elements__like-button').classList.toggle('elements__like-button_active');
+        this._element.querySelector('.elements__like-button').addEventListener('click', (evt) => {
+            evt.target.classList.toggle('elements__like-button_active');
+        });
     }
     _removeCard = () => {
-        this._element.remove();
+        this._element.querySelector('.elements__reset-button').addEventListener('click', (evt) => {
+            this._element = evt.target.closest('.elements__element');
+            this._element.remove();
+        });
     }
-    _popupFullAct = () => {
+    _popupFullImageActiv = () => {
         fullscreenImage.src = this.imageLink;
         fullscreenTitle.textContent = this.title;
         fullscreenImage.alt = this.title;
@@ -34,7 +40,7 @@ export default class Card {
         document.addEventListener("keyup", this._closeOnEsc);
         fullscreenCard.addEventListener("click", this._closeOnOverlay);
     }
-    _popupFullDeact = () => {
+    _popupFullImageDeactivate = () => {
         fullscreenImage.src = '';
         fullscreenTitle.textContent = '';
         fullscreenImage.alt = '';
@@ -44,28 +50,26 @@ export default class Card {
     }
     _closeOnEsc = (evt) => {
         if (evt.key === "Escape") {
-        this._popupFullAct();
+        this._popupFullImageDeactivate();
         }
     }
     
     _closeOnOverlay = (evt) => {
         if(evt.target.classList.contains("popup")) {
-        this._popupFullDeact();
+        this._popupFullImageDeactivate();
         }
     }
-
     _setEventListeners = () => {
-        this._element.querySelector('.elements__like-button').addEventListener('click', () => {
-            this._like();
-        })
-        this._element.querySelector('.elements__reset-button').addEventListener('clicl', () => {
-            this._removeCard();
-        })
+        this._like();
+        this._removeCard();
         this._element.querySelector('.elements__image').addEventListener('click', () => {
-            this._popupFullAct();
+            this._popupFullImageActiv();
         })
         closeButton.addEventListener('click', () => {
-            this._popupFullDeact();
+            this._popupFullImageDeactivate();
+        })
+        closeFullscreenButton.addEventListener('click', () => {
+            this._popupFullImageDeactivate();
         })
     }
 }
