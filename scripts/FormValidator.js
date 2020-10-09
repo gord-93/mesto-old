@@ -24,10 +24,9 @@ export default class FormValidator {
     _showInputError = (inputElement) => {
         const errorElement = this._element.querySelector(`#${inputElement.id}-error`);
         inputElement.classList.add(this._inputErrorClass);
-        errorElement.textContent = inputElement.inputErrorMessage;
+        errorElement.textContent = inputElement.validationMessage;
         errorElement.classList.add(this._errorClass);
     };
-    
     _hideInputError = (inputElement) => {
         const errorElement = this._element.querySelector(`#${inputElement.id}-error`);
         inputElement.classList.remove(this._inputErrorClass);
@@ -35,17 +34,16 @@ export default class FormValidator {
         errorElement.textContent = '';
     };
     _checkInputValidity = (inputElement) => {
-        const isInputNotValid = !inputElement.validity.valid;
-        if (isInputNotValid) {
-            showInputError(inputElement);
+        if (!inputElement.validity.valid) {
+            this._showInputError(inputElement);
         } else {
-            hideInputError(inputElement);
+            this._hideInputError(inputElement);
         }
     };
     _hasInvalidInput = () => {
         const inputList = Array.from(this._element.querySelectorAll(this._inputSelector))
         return inputList.some((inputElement) => {
-        return !inputElement.validity.valid;
+            return !inputElement.validity.valid;
         });
     };
     _toggleButtonState = () => {
