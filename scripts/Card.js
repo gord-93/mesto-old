@@ -37,25 +37,25 @@ export default class Card {
         fullscreenTitle.textContent = this.title;
         fullscreenImage.alt = this.title;
         popupOpen(fullscreenCard);
-        document.addEventListener("keyup", this._closeOnEsc);
-        fullscreenCard.addEventListener("click", this._closeOnOverlay);
+        document.addEventListener('keyup', this._closeOnEsc);
+        fullscreenCard.addEventListener('click', this._closeOnOverlay);
     }
     _popupFullImageDeactivate = () => {
         fullscreenImage.src = '';
         fullscreenTitle.textContent = '';
         fullscreenImage.alt = '';
         popupClose(fullscreenCard);
-        document.removeEventListener("keyup", this._closeOnEsc);
-        fullscreenCard.removeEventListener("click", this._closeOnOverlay);
+        document.removeEventListener('keyup', this._closeOnEsc);
+        fullscreenCard.removeEventListener('click', this._closeOnOverlay);
     }
     _closeOnEsc = (evt) => {
-        if (evt.key === "Escape") {
+        if (evt.key === 'Escape') {
         this._popupFullImageDeactivate();
         }
     }
     
     _closeOnOverlay = (evt) => {
-        if(evt.target.classList.contains("popup")) {
+        if(evt.target.classList.contains('popup')) {
         this._popupFullImageDeactivate();
         }
     }
