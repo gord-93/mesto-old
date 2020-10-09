@@ -74,30 +74,6 @@ function submitProfileInfo(evt) {
     popupClose(popupProfileEdit);
 }
 
-/*
-function addCard(cardTitle, imageSrc) {
-    const cardElement = cardTemplate.cloneNode(true).content;
-    const cardPicture = cardElement.querySelector('.elements__image');
-    cardElement.querySelector('.elements__title').textContent = cardTitle;
-    cardPicture.src = imageSrc;
-    cardPicture.alt = cardTitle;
-    cardPicture.addEventListener('click', function() {
-        fullscreenImage.src = imageSrc;
-        fullscreenTitle.textContent = cardTitle;
-        fullscreenImage.alt = cardTitle;
-        popupOpen(fullscreenCard);
-    });
-    cardElement.querySelector('.elements__like-button').addEventListener('click', function (evt) {
-        evt.target.classList.toggle('elements__like-button_active');
-    });
-    cardElement.querySelector('.elements__reset-button').addEventListener('click', function(evt) {
-        const elementOfElements = evt.target.closest('.elements__element');
-        elementOfElements.remove();
-    });
-    elements.prepend(cardElement);
-};
-*/
-
 function addCard(container, element) {
     container.prepend(element);
 };
@@ -107,8 +83,6 @@ function addNewCard(data) {
     const newCardElement = newCard.createCard();
     addCard(elements, newCardElement);
 }
-
-initialCards.forEach((item) => addNewCard(item));
 
 function escClosePopup(evt) {
     const openedPopup = document.querySelector('.popup_opened');
@@ -133,19 +107,11 @@ function removeErrors() {
     });
 };
 
-/*initialCards.forEach(function(item) {
-    addCard(item.name, item.link);
-});*/
+initialCards.forEach(function(item) {
+    addNewCard(item);
+});
 
 popupFormProfile.addEventListener('submit', submitProfileInfo);
-
-/*
-newCardForm.addEventListener('submit', function(evt) {
-    evt.preventDefault();
-    addCard(cardName.value, cardLink.value);
-    popupClose(cardForm);
-});
-*/
 
 editProfileButton.addEventListener('click', function() {
     popupTextName.value = profileName.textContent;
@@ -180,3 +146,35 @@ popupForm.addEventListener('submit', submitProfileInfo);
 
 
 
+/*
+function addCard(cardTitle, imageSrc) {
+    const cardElement = cardTemplate.cloneNode(true).content;
+    const cardPicture = cardElement.querySelector('.elements__image');
+    cardElement.querySelector('.elements__title').textContent = cardTitle;
+    cardPicture.src = imageSrc;
+    cardPicture.alt = cardTitle;
+    cardPicture.addEventListener('click', function() {
+        fullscreenImage.src = imageSrc;
+        fullscreenTitle.textContent = cardTitle;
+        fullscreenImage.alt = cardTitle;
+        popupOpen(fullscreenCard);
+    });
+    cardElement.querySelector('.elements__like-button').addEventListener('click', function (evt) {
+        evt.target.classList.toggle('elements__like-button_active');
+    });
+    cardElement.querySelector('.elements__reset-button').addEventListener('click', function(evt) {
+        const elementOfElements = evt.target.closest('.elements__element');
+        elementOfElements.remove();
+    });
+    elements.prepend(cardElement);
+};
+*/
+
+
+
+/*newCardForm.addEventListener('submit', function(evt) {
+    evt.preventDefault();
+    addCard(cardName.value, cardLink.value);
+    popupClose(cardForm);
+});
+*/
