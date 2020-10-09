@@ -1,3 +1,5 @@
+(function() {
+
 const showInputError = (formElement, inputElement, inputErrorMessage, allClasses) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(allClasses.inputErrorClass);
@@ -71,4 +73,4 @@ enableValidation({
 }); 
 
 
-
+})();
