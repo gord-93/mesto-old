@@ -109,7 +109,7 @@ function addNewCard(data) {
 function validate(allClasses, formValid) {
     const validatedForm = new FormValidator(allClasses, formValid);
     validatedForm.enableValidation();
-};
+}
 
 function removeErrors() {
     errors.forEach(function(errorElement) {
@@ -118,7 +118,7 @@ function removeErrors() {
     inputSelector.forEach(function(inputElement) {
         inputElement.classList.remove("popup__input_type_error");
     });
-};
+}
 
 initialCards.forEach(function(item) {
     addNewCard(item);
