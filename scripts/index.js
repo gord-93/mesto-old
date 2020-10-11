@@ -59,6 +59,10 @@ const allFormsClasses = {
     errorClass: 'popup__error_visible'
 };
 
+const profileValidated = new FormValidator(allFormsClasses, popupFormProfile);
+const cardValidated =  new FormValidator(allFormsClasses, newCardForm);
+profileValidated.enableValidation();
+cardValidated.enableValidation();
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -142,9 +146,7 @@ newCardForm.addEventListener('submit', function(evt) {
     closePopup(cardForm);
 });
 
-const profileValidated = new FormValidator(allFormsClasses, popupFormProfile);
-const cardValidated =  new FormValidator(allFormsClasses, newCardForm);
 
-profileValidated.enableValidation();
-cardValidated.enableValidation();
+
+
 
