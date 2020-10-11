@@ -23,8 +23,6 @@ const newCardForm = document.querySelector('.popup__newcard-form');
 const popupFormProfile = document.querySelector('.popup__form-profile');
 const fullscreenImage = document.querySelector('.popup__image');
 const fullscreenTitle = document.querySelector('.popup__image-title');
-const errors = Array.from(document.querySelectorAll('.popup__input_error'));
-const inputSelector = Array.from(document.querySelectorAll('.popup__input'));
 const initialCards = [
     {
         name: 'Байкал',
@@ -105,21 +103,6 @@ function addNewCard(data) {
     addCard(elementArea, newCardElement);
 }
 
-function validate(allClasses, formValid) {
-    const validatedForm = new FormValidator(allClasses, formValid);
-    validatedForm.enableValidation();
-}
-
-/*
-function removeErrors() {
-    errors.forEach(function(errorElement) {
-        errorElement.textContent = '';
-    });
-    inputSelector.forEach(function(inputElement) {
-        inputElement.classList.remove('popup__input_type_error');
-    });
-}
-*/
 initialCards.forEach(function(item) {
     addNewCard(item);
 });
@@ -129,12 +112,14 @@ popupFormProfile.addEventListener('submit', submitProfileInfo);
 editProfileButton.addEventListener('click', () => {
     popupTextName.value = profileName.textContent;
     popupTextAbout.value = profileAbout.textContent;
+    profileValidated.removeErrors();
     openPopup(popupProfileEdit);
 });
 
 addCardButton.addEventListener('click', () => {
     cardName.value = "";
     cardLink.value = "";
+    cardValidated.removeErrors();
     openPopup(cardForm);
 });
 
@@ -157,12 +142,9 @@ newCardForm.addEventListener('submit', function(evt) {
     closePopup(cardForm);
 });
 
-validate(allFormsClasses, popupFormProfile);
-validate(allFormsClasses, newCardForm);
+const profileValidated = new FormValidator(allFormsClasses, popupFormProfile);
+const cardValidated =  new FormValidator(allFormsClasses, newCardForm);
 
-
-
-
-
-
+profileValidated.enableValidation();
+cardValidated.enableValidation();
 
