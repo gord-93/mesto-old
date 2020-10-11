@@ -66,14 +66,12 @@ function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', escClosePopup);
     popup.addEventListener('click', closePopupOverlay);
-    removeErrors();
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', escClosePopup);
     popup.removeEventListener('click', closePopupOverlay);
-    removeErrors();
 }
 
 function escClosePopup(evt) {
@@ -112,6 +110,7 @@ function validate(allClasses, formValid) {
     validatedForm.enableValidation();
 }
 
+/*
 function removeErrors() {
     errors.forEach(function(errorElement) {
         errorElement.textContent = '';
@@ -120,7 +119,7 @@ function removeErrors() {
         inputElement.classList.remove('popup__input_type_error');
     });
 }
-
+*/
 initialCards.forEach(function(item) {
     addNewCard(item);
 });

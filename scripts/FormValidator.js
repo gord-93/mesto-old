@@ -70,6 +70,21 @@
             evt.preventDefault();
             this._disabledSubmitButton();
             });
+            
     };
-    
+    removeErrors = () => {
+        this._inputList = Array.from(this._element.querySelectorAll(this._inputSelector));
+        this._errorList = Array.from(this._element.querySelectorAll('.popup__input_error'))
+        this._inputList.forEach((inputElement) => {
+            inputElement.classList.remove(this._inputErrorClass);
+            this._validatedForm.reset();
+        });
+        this._errorList.forEach((errorElement) => {
+            errorElement.textContent = '';
+            errorElement.classList.remove(this._errorClass);
+        });
+    };
 };
+
+
+
