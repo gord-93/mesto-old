@@ -1,4 +1,5 @@
-import {closeButton, fullscreenImage, fullscreenTitle, openPopup, closePopup, fullscreenCard, closeFullscreenButton} from './index.js';
+import {closeButton, fullscreenImage, fullscreenTitle, fullscreenCard, closeFullscreenButton} from '../utils/constants.js';
+
 
 export default class Card {
     constructor(data, cardSelector) {
