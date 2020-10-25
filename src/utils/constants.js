@@ -1,26 +1,16 @@
-export {closeButton, fullscreenImage, fullscreenTitle, fullscreenCard, closeFullscreenButton,
-    profile, editProfileButton, addCardButton, profileName, profileAbout, elementArea, popup, popupForm, popupTextName, popupTextAbout, closeFormButton,
-    cardName, cardLink, popupProfileEdit, cardForm, newCardForm, popupFormProfile, initialCards, allFormsClasses};
+export {fullscreenImage, fullscreenTitle, editProfileButton, addCardButton,popupTextName, popupTextAbout, cardName, cardLink, 
+    newCardForm, popupFormProfile, initialCards, allFormsClasses};
 
 
 const profile = document.querySelector('.profile');
 const editProfileButton = profile.querySelector('.profile__edit-button');
 const addCardButton = profile.querySelector('.profile__add-button');
-const profileName = profile.querySelector('.profile__name');
-const profileAbout = profile.querySelector('.profile__about');
-const elementArea = document.querySelector('.elements');
 const popup = document.querySelector('.popup');
-const closeButton = popup.querySelector('.popup__close-button');
 const popupForm = popup.querySelector('.popup__form');
 const popupTextName = popupForm.querySelector('.popup__text-name');
 const popupTextAbout = popupForm.querySelector('.popup__text-about');
-const closeFormButton = document.querySelector('.popup__close-button_card');
 const cardName = document.querySelector('.popup__text-name_card');
 const cardLink = document.querySelector('.popup__link');
-const popupProfileEdit = document.querySelector('.popup__profile-edit');
-const cardForm = document.querySelector('.popup__card-form');
-const fullscreenCard = document.querySelector('.popup__fullscreen');
-const closeFullscreenButton = document.querySelector('.popup__close-button_fullscreen');
 const newCardForm = document.querySelector('.popup__newcard-form');
 const popupFormProfile = document.querySelector('.popup__form-profile');
 const fullscreenImage = document.querySelector('.popup__image');
