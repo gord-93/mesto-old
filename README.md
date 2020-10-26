@@ -23,6 +23,8 @@
 - Настроил валидацию форм; 
 - Добавил возможность закрытия popup клавишей Esc;
 - Добавил возможность закрытия popup при нажатие на Overlay; 
+- Провел рефакторинг кода JS (FormValidator.js, Card,js);
 
 Обновление:
-- Провел рефакторинг кода JS (FormValidator.js, Card,js);
+- Провел рефакторинг кода JS (Popup.js, PopupWithForm.js, PopupWithImage.js, Section.js, UserInfo.js);
+- Настроил сборку Webpack; 
