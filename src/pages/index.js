@@ -55,8 +55,6 @@ editProfileButton.addEventListener('click', () => {
 });
 
 addCardButton.addEventListener('click', () => {
-    cardName.value = '';
-    cardLink.value = '';
     cardValidated.removeErrors();
     cardEdit.open();
 });

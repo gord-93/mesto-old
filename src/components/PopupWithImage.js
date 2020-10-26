@@ -5,7 +5,7 @@ export default class PopupWithImage extends Popup {
     constructor(popupSelector) {
         super(popupSelector);
     }
-    open = (data) => {
+    open(data) {
         this._popup.classList.add('popup_opened');
         document.addEventListener('keydown', this._handleEscClose);
         this._popup.addEventListener('click', this._handleOverlayClose);
