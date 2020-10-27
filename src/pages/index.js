@@ -14,7 +14,7 @@ import {editProfileButton, addCardButton,popupTextName, popupTextAbout, cardName
 const profileValidated = new FormValidator(allFormsClasses, popupFormProfile);
 const cardValidated =  new FormValidator(allFormsClasses, newCardForm);
 const openFullImage = new PopupWithImage('.popup__fullscreen');
-const userInfo = new UserInfo('.profile__name', '.profile__about');
+const userInfo = new UserInfo({userName: '.profile__name', userAbout: '.profile__about'});
 
 const initCardElements = new Section({
     items: initialCards,
@@ -25,7 +25,7 @@ const initCardElements = new Section({
     }}, '.elements');
 
 const profileEdit = new PopupWithForm(() => {
-    userInfo.setUserInfo(popupTextName.value, popupTextAbout.value);
+    userInfo.setUserInfo({name: popupTextName.value, about: popupTextAbout.value});
     profileEdit.close();
 }, '.popup__profile-edit');
 

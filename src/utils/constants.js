@@ -1,5 +1,5 @@
 export {fullscreenImage, fullscreenTitle, editProfileButton, addCardButton,popupTextName, popupTextAbout, cardName, cardLink, 
-    newCardForm, popupFormProfile, initialCards, allFormsClasses};
+    newCardForm, popupFormProfile, initialCards, allFormsClasses, escButton};
 
 
 const profile = document.querySelector('.profile');
@@ -15,6 +15,7 @@ const newCardForm = document.querySelector('.popup__newcard-form');
 const popupFormProfile = document.querySelector('.popup__form-profile');
 const fullscreenImage = document.querySelector('.popup__image');
 const fullscreenTitle = document.querySelector('.popup__image-title');
+const escButton = 'Escape';
 const initialCards = [
     {
         name: 'Байкал',
