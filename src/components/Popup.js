@@ -3,19 +3,18 @@ import {escButton} from '../utils/constants.js';
 export default class Popup {
     constructor(popupSelector) {
         this._popup = document.querySelector(popupSelector);
-        this._handleEscClose = this._handleEscClose.bind(this);
-        this._handleOverlayClose = this._handleOverlayClose.bind(this);
+        this._handleEscClose = this._handleEscClose.bind(this); //тут я сделал бинд для того, чтобы при 
+        //закрытии попапа обработчик удалялся, а стрелочную функцию можно использовать тогда, когда не нужно ее удалять. 
     }
+
     open() {
         this._popup.classList.add('popup_opened');
         document.addEventListener('keydown', this._handleEscClose);
-        this._popup.addEventListener('click', this._handleOverlayClose);
     }
-    
+
     close() {
         this._popup.classList.remove('popup_opened');
         document.removeEventListener('keydown', this._handleEscClose);
-        this._popup.removeEventListener('click', this._handleOverlayClose);
     }
 
     _handleEscClose(evt) {
@@ -34,6 +33,6 @@ export default class Popup {
         this._popup.querySelector('.popup__close-button').addEventListener('click', () => {
             this.close();
         });
-        
+        this._popup.addEventListener('click', (evt) => this._handleOverlayClose(evt));
     }
 }
