@@ -11,7 +11,12 @@
     </header>
     <main class="main">
         <section class="profile">
+            <div class="profile__avatar-elements">
             <img src="images/profile-avatar.jpg" alt="Аватар Жак-Ив Кусто" class="profile__avatar">
+            <div class="profile__edit-avatar">
+                <button type="button" class="profile__edit-icon"></button>
+            </div>
+            </div>
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button type="button" class="profile__edit-button"></button>
@@ -62,13 +67,24 @@
         <button type="reset" class="popup__close-button popup__close-button_fullscreen"></button>
         </div>
     </div>
+    <div class="popup popup__edit-avatar">
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup__form popup__avatar-form" method="POST" name="popupForm" novalidate>
+            <input type="url" class="popup__input popup__text-name" placeholder="Ссылка на фотографию" name="popupAvatarLink" value=""
+            id="input-avatar-link" required>
+            <span class="popup__input_error" id="input-link-error"></span>
+        </form>
+    </div>
     <template id="card-template">
         <div class="elements__element" id="elementCard">
         <img src="#" class="elements__image">
         <button type="reset" class="elements__reset-button"></button>
         <div class="elements__about">
             <h2 class="elements__title"></h2>
-            <button type="button" class="elements__like-button"></button>
+            <div class="elements__like-elements">
+                <button type="button" class="elements__like-button"></button>
+                <p type="button" class="elements__like-scorer">0</p>
+            </div>
         </div>
         </div>
     </template>
