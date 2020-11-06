@@ -18,9 +18,9 @@
             </div>
             </div>
             <div class="profile__info">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <h1 class="profile__name"></h1>
                 <button type="button" class="profile__edit-button"></button>
-                <p class="profile__about">Исследователь океана</p>
+                <p class="profile__about"></p>
             </div>
             <button type="button" class="profile__add-button"></button>
         </section> 
@@ -68,13 +68,26 @@
         </div>
     </div>
     <div class="popup popup__edit-avatar">
-        <h3 class="popup__title">Обновить аватар</h3>
-        <form class="popup__form popup__avatar-form" method="POST" name="popupForm" novalidate>
-            <input type="url" class="popup__input popup__text-name" placeholder="Ссылка на фотографию" name="popupAvatarLink" value=""
-            id="input-avatar-link" required>
+        <div class="popup__container">
+            <h3 class="popup__title">Обновить аватар</h3>
+            <form class="popup__form popup__avatar-form" method="POST" name="popupForm" novalidate>
+            <input type="url" class="popup__input popup__link" placeholder="Ссылка на фотографию" name="popupAvatarLink" value=""
+                id="input-avatar-link" required>
             <span class="popup__input_error" id="input-link-error"></span>
-        </form>
+            <button type="submit" class="popup__save-button popup__save-button_avatar">Сохранить</button>
+            </form>
+            <button type="reset" class="popup__close-button popup__close-button_avatar" name="popup__close-button"></button>
+        </div>
     </div>
+
+    <div class="popup popup__delete-card">
+        <div class="popup__container">
+            <h3 class="popup__title">Вы уверены?</h3>
+            <button type="submit" class="popup__save-button popup__save-button_delete-accept">Да</button>
+            <button type="reset" class="popup__close-button popup__close-button_delete-menu" name="popup__close-button"></button>
+        </div>
+    </div>
+
     <template id="card-template">
         <div class="elements__element" id="elementCard">
         <img src="#" class="elements__image">
