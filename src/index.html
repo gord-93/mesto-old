@@ -25,6 +25,7 @@
             <button type="button" class="profile__add-button"></button>
         </section> 
         <section class="elements">
+            <!-- new card created here -->
         </section>
     </main>
     <footer class="footer">
@@ -49,10 +50,10 @@
         <div class="popup__container">
             <h3 class="popup__title">Новое место</h3>
             <form class="popup__form popup__newcard-form" method="POST" name="popupForm" novalidate>
-                <input type="text" class="popup__input popup__text-name popup__text-name_card" placeholder="Название" name="popupTextNameCard" value="" 
+                <input type="text" class="popup__input popup__text-name popup__text-name_card" placeholder="Название" name="popupTextNameCard" 
                 required minlength="2" maxlength="30" id="input-name-card" required>
                 <span class="popup__input_error" id="input-name-card-error"></span>
-                <input type="url" class="popup__input popup__link" placeholder="Ссылка на картинку" name="popupLink" value="" 
+                <input type="url" class="popup__input popup__link" placeholder="Ссылка на картинку" name="popupLink" 
                 id="input-link" required>
                 <span class="popup__input_error" id="input-link-error"></span>
                 <button type="submit" class="popup__save-button popup__save-button_card">Создать</button>
@@ -96,7 +97,7 @@
             <h2 class="elements__title"></h2>
             <div class="elements__like-elements">
                 <button type="button" class="elements__like-button"></button>
-                <p type="button" class="elements__like-scorer">0</p>
+                <p class="elements__like-scorer">0</p>
             </div>
         </div>
         </div>

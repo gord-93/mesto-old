@@ -1,10 +1,12 @@
+import { popupTextAbout, popupTextName } from "../utils/constants";
+
 export default class Api {
     constructor({baseUrl, headers}) {
         this.baseUrl = baseUrl;
         this.headers = headers;
     }
     getUserAttribute() {
-        return fetch(this.baseUrl + "/users/me", {
+        return fetch(this.baseUrl + '/users/me', {
         headers: this.headers,
         })
         .then((res) => {
@@ -28,13 +30,13 @@ export default class Api {
     promiseAll() {
         return Promise.all([this.getUserAttribute(), this.getInitialCards()]);
     }
-    setUserAttribute() {
-        return fetch(this.baseUrl + "/users/me", {
-            method: "PATCH",
+    setUserAttribute(inputName, inputAbout) {
+        return fetch(this.baseUrl + '/users/me', {
+            method: 'PATCH',
             headers: this.headers,
             body: JSON.stringify({
-                name: name,
-                about: about
+                name: inputName,
+                about: inputAbout
             }),
         }).then((res) => {
             if (res.ok) {
@@ -43,13 +45,13 @@ export default class Api {
             return Promise.reject(`Ошибка: ${res.status}`);
         });
     }
-    addCard({ name, link }) {
-        return fetch(this.baseUrl + "/cards", {
-            method: "POST",
+    addCard(inputName, inputLink) {
+        return fetch(this.baseUrl + '/cards', {
+            method: 'POST',
             headers: this.headers,
             body: JSON.stringify({
-            name: name,
-            link: link,
+                name: inputName,
+                link: inputLink,
             }),
         }).then((res) => {
             if(res.ok) {
@@ -59,14 +61,14 @@ export default class Api {
         });
     }
     deleteCard(cardId) {
-        return fetch(this.baseUrl + "/cards/" + cardId, {
-            method: "DELETE",
+        return fetch(this.baseUrl + '/cards/' + cardId, {
+            method: 'DELETE',
             headers: this.headers,
         });
     }
-    isLiked(cardId) {
-        return fetch(this.baseUrl + "/cards/likes/" + cardId, {
-            method: "PUT",
+    likeCard(cardId) {
+        return fetch(this.baseUrl + '/cards/likes/' + cardId, {
+            method: 'PUT',
             headers: this.headers,
         }).then((res) => {
             if (res.ok) {
@@ -75,9 +77,9 @@ export default class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
         });
     }
-    disLike(cardId) {
-        return fetch(this.baseUrl + "/cards/likes/" + cardId, {
-            method: "DELETE",
+    dislikeCard(cardId) {
+        return fetch(this.baseUrl + '/cards/likes/' + cardId, {
+            method: 'DELETE',
             headers: this.headers,
         }).then((res) => {
             if(res.ok) {
@@ -87,8 +89,8 @@ export default class Api {
         });
     }
     changeAvatar(avatar) {
-        return fetch(this.baseUrl + "/users/me/avatar", {
-            method: "PATCH",
+        return fetch(this.baseUrl + '/users/me/avatar', {
+            method: 'PATCH',
             headers: this.headers,
             body: JSON.stringify({
             avatar: avatar,
