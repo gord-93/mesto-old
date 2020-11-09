@@ -7,14 +7,43 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import {editProfileButton, addCardButton,popupTextName, popupTextAbout, cardName, cardLink, 
 newCardForm, popupFormProfile, initialCards, allFormsClasses, profileName, profileAbout, profileAvatar, avatarEditButton,
-popupTextCard, popupLinkCard} from '../utils/constants.js';
+popupTextCard, popupLinkCard, popupAvatarForm, popupAvatarLink, saveButtonAvatar, popupSaveButton, popupSaveCard} from '../utils/constants.js';
 import Api from '../components/Api.js';
 
 const profileValidated = new FormValidator(allFormsClasses, popupFormProfile);
 const cardValidated =  new FormValidator(allFormsClasses, newCardForm);
+const avatarValidated = new FormValidator(allFormsClasses, popupAvatarForm);
+
 const openFullImage = new PopupWithImage('.popup__fullscreen');
 const userInfo = new UserInfo({userName: '.profile__name', userAbout: '.profile__about', userAvatar: '.profile__avatar'});
-const popupAvatar = new PopupWithForm((res) => {console.log(res)}, '.popup__edit-avatar')
+
+const renderLoading = (popupSubmit, isLoading) => {
+    if (isLoading) {
+        popupSubmit.textContent = popupSubmit.textContent + '...';
+    } else {
+        popupSubmit.textContent = popupSubmit.textContent.slice(
+        0,
+        popupSubmit.textContent.length - 3
+        );
+    }
+}
+
+
+
+const popupAvatar = new PopupWithForm((evt) => {
+    evt.preventDefault();
+    renderLoading(saveButtonAvatar, true);
+    api
+    .changeAvatar(popupAvatarLink.value)
+    .then(() => {
+        userInfo.setUserAvatar(popupAvatarLink.value);
+    })
+    .finally(() => {
+        renderLoading(saveButtonAvatar, false);
+        popupAvatar.close();
+    })
+}, '.popup__edit-avatar');
+
 let initCardElements;
 const addNewCard = (data) => {
     const newCard = new Card(data, '#card-template', () => {openFullImage.open(data);});
@@ -48,22 +77,26 @@ api.promiseAll()
 
 const profileEdit = new PopupWithForm((evt) => {
     evt.preventDefault();
+    renderLoading(popupSaveButton, true);
     api.setUserAttribute(popupTextName.value, popupTextAbout.value)
         .then((user) => {
             userInfo.setUserInfo({name: user.name, about: user.about, userId: user._id});
         })
-        .then(() => {
+        .finally(() => {
+            renderLoading(popupSaveButton, false);
             profileEdit.close();
         })
 }, '.popup__profile-edit');
 
 const cardEdit = new PopupWithForm((evt) => {
     evt.preventDefault();
+    renderLoading(popupSaveCard, true);
     api.addCard(popupTextCard.value, popupLinkCard.value)
         .then((data) => {
             initCardElements.addItem(addNewCard(data));
         })
-        .then(() => {
+        .finally(() => {
+            renderLoading(popupSaveCard, false);
             cardEdit.close();
         })
 }, '.popup__card-form');
@@ -75,10 +108,12 @@ const cardEdit = new PopupWithForm((evt) => {
 
 profileValidated.enableValidation();
 cardValidated.enableValidation();
+avatarValidated.enableValidation();
 openFullImage.setEventListeners();
 profileEdit.setEventListeners();
 cardEdit.setEventListeners();
 popupAvatar.setEventListeners();
+
 
 editProfileButton.addEventListener('click', () => {
     profileEdit.open();
@@ -94,4 +129,5 @@ addCardButton.addEventListener('click', () => {
 
 avatarEditButton.addEventListener('click', () => {
     popupAvatar.open();
+    avatarValidated.removeErrors();
 });
