@@ -60,7 +60,7 @@ export default class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
         });
     }
-    deleteCard(cardId) {
+    removeCard(cardId) {
         return fetch(this.baseUrl + '/cards/' + cardId, {
             method: 'DELETE',
             headers: this.headers,
