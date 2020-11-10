@@ -21,21 +21,47 @@ export default class Card {
     }
     createCard() {
         this._element = this._getTemplate();
+        this._likeButton = this._element.querySelector('.elements__like-button');
+        this._likeScorer = this._element.querySelector('.elements__like-scorer');
         this._imageElement = this._element.querySelector('.elements__image');
+
+        if (this._likes === undefined) {
+            this._likeScorer.textContent = 0;
+        } else {
+            this._likeScorer.textContent = this._likes.length;
+        }
+
+        if (this._likes === undefined) {
+            this._likes = [];
+        }
+
+        this._likesId = [];
+        this._likes.forEach((like) => {
+        this._likesId.push(like._id);
+    })
+
+        if (this._likesId.includes(this._ownerId)) {
+            this._likeButton.classList.add('elements__like-button_active');
+    }
+
         this._setEventListeners();
         this._imageElement.src = this.imageLink;
         this._imageElement.alt = this.title;
         this._element.querySelector('.elements__title').textContent = this.title;
         return this._element;
     }
-    _likeActive(evt) {
-        evt.target.classList.toggle('elements__like-button_active');
+    _likeActive() {
+        this._likeButton.classList.toggle('elements__like-button_active');
     }
-    _checkLiked(evt) {
-        if (evt.target.classList.contains('elements__like-button_active')) {
+    _checkLiked() {
+        if (this._likeButton.classList.contains('elements__like-button_active')) {
             return true;
         }
         return false;
+    }
+    likesScoreDisplay(likes) {
+        this._likeScorer.textContent = likes.length;
+        this._likeActive();
     }
     removeCard(evt) {
         const element = evt.target.closest('.elements__element');
@@ -46,7 +72,13 @@ export default class Card {
     }
     _setEventListeners() {
         this._elementsCard = this._element.querySelector('.elements__element');
-        this._element.querySelector('.elements__like-button').addEventListener('click', this._likeActive);
+        this._likeButton.addEventListener('click', () => {
+            if (!this._checkLiked()) {
+                this._handleLikeClick(this._id);
+            } else {
+                this._handleRemoveLikeClick(this._id);
+            }
+        });
         this._removeButtonIcon = this._element.querySelector('.elements__reset-button');
         if(this._owner._id === this._ownerId) {
             this._removeButtonIcon.addEventListener('click', () => { 
@@ -55,9 +87,9 @@ export default class Card {
         } else {
             this._removeButtonIcon.remove();
     }
-
         this._imageElement.addEventListener('click', (evt) => {
             this._handleCardClick(this._data);
         });
     }
+        
 }

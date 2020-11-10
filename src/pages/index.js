@@ -49,6 +49,24 @@ const addNewCard = (data) => {
     },
     (card, cardId) => {
         popupRemoveCard.open(card, cardId);
+    },
+    (cardId) => {
+        return api.likeCard(cardId)
+        .then((item) => {
+            newCard.likesScoreDisplay(item.likes);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    },
+    (cardId) => {
+        return api.dislikeCard(cardId)
+        .then((item) => {
+            newCard.likesScoreDisplay(item.likes);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     }
     );
     const newCardElement = newCard.createCard();
