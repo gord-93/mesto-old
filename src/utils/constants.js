@@ -1,7 +1,7 @@
 export {fullscreenImage, fullscreenTitle, editProfileButton, addCardButton,popupTextName, popupTextAbout, cardName, cardLink, 
     newCardForm, popupFormProfile, allFormsClasses, escButton, popupSaveButton, avatarEditButton,
     popupAvatarForm, resetCardButton, initialCards, profileName, profileAbout, profileAvatar, popupTextCard, popupLinkCard,
-    popupAvatarLink, saveButtonAvatar, popupSaveCard};
+    popupAvatarLink, saveButtonAvatar, popupSaveCard, popupRemoveButton};
 
 
 const profile = document.querySelector('.profile');
@@ -29,6 +29,7 @@ const popupTextCard = document.querySelector('.popup__text-name_card');
 const popupLinkCard = document.querySelector('.popup__link');
 const popupAvatarLink = document.querySelector('.popup__avatar-link');
 const popupSaveCard = document.querySelector('.popup__save-button_card');
+const popupRemoveButton = document.querySelector('.popup__save-button_delete-accept');
 const escButton = 'Escape';
 const initialCards = [];
 

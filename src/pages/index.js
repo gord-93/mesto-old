@@ -7,8 +7,9 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import {editProfileButton, addCardButton,popupTextName, popupTextAbout, cardName, cardLink, 
 newCardForm, popupFormProfile, initialCards, allFormsClasses, profileName, profileAbout, profileAvatar, avatarEditButton,
-popupTextCard, popupLinkCard, popupAvatarForm, popupAvatarLink, saveButtonAvatar, popupSaveButton, popupSaveCard} from '../utils/constants.js';
+popupTextCard, popupLinkCard, popupAvatarForm, popupAvatarLink, saveButtonAvatar, popupSaveButton, popupSaveCard, popupRemoveButton} from '../utils/constants.js';
 import Api from '../components/Api.js';
+import PopupWithRemove from '../components/PopupWithRemove';
 
 const profileValidated = new FormValidator(allFormsClasses, popupFormProfile);
 const cardValidated =  new FormValidator(allFormsClasses, newCardForm);
@@ -28,13 +29,28 @@ const renderLoading = (submitButton, isLoading) => {
     }
 }
 
+const renderLoadingRemoveButton = (submitButton, isLoading) => {
+    if (isLoading) {
+        submitButton.textContent = 'Удаление...';
+    } else {
+        submitButton.textContent = 'Да';
+    }
+}
 
 
 let initCardElements;
 
 
 const addNewCard = (data) => {
-    const newCard = new Card(data, '#card-template', () => {openFullImage.open(data);});
+    const newCard = new Card(data, '#card-template', 
+    userInfo.getUserId(),
+    () => {
+        openFullImage.open(data);
+    },
+    (card, cardId) => {
+        popupRemoveCard.open(card, cardId);
+    }
+    );
     const newCardElement = newCard.createCard();
     return newCardElement;
 }
@@ -105,6 +121,19 @@ const popupAvatar = new PopupWithForm((evt) => {
 
 
 
+const popupRemoveCard = new PopupWithRemove((cardId, card, popup) => {
+    renderLoadingRemoveButton(popupRemoveButton, true);
+    api
+    .removeCard(cardId)
+    .then(() => {
+        card.remove();
+    })
+    .then(() => {
+        renderLoadingRemoveButton(popupRemoveButton, false);
+        popup.close();
+    })
+}, '.popup__delete-card'); 
+
 
 profileValidated.enableValidation();
 cardValidated.enableValidation();
@@ -113,6 +142,7 @@ openFullImage.setEventListeners();
 profileEdit.setEventListeners();
 cardEdit.setEventListeners();
 popupAvatar.setEventListeners();
+popupRemoveCard.setEventListeners();
 
 
 editProfileButton.addEventListener('click', () => {

@@ -1,10 +1,17 @@
 export default class Card {
-    constructor(data, cardSelector, handleCardClick) {
+    constructor(data, cardSelector, ownerId, handleCardClick, handleCardRemove, handleLikeClick, handleRemoveLikeClick) {
         this.title = data.name;
         this.imageLink = data.link;
         this._cardSelector = cardSelector;
+        this._id = data._id
+        this._owner = data.owner;
+        this._ownerId = ownerId;
         this.isLiked = false;
         this._handleCardClick = handleCardClick;
+        this._handleCardRemove = handleCardRemove;
+        this._handleLikeClick = handleLikeClick;
+        this._handleRemoveLikeClick = handleRemoveLikeClick;
+        this._likes = data.likes;
     }
     _getTemplate() {
         const cardElement = document.querySelector(this._cardSelector)
@@ -21,7 +28,7 @@ export default class Card {
         this._element.querySelector('.elements__title').textContent = this.title;
         return this._element;
     }
-    _like(evt) {
+    _likeActive(evt) {
         evt.target.classList.toggle('elements__like-button_active');
     }
     _checkLiked(evt) {
@@ -30,15 +37,26 @@ export default class Card {
         }
         return false;
     }
-    _removeCard(evt) {
+    removeCard(evt) {
         const element = evt.target.closest('.elements__element');
         element.remove();
     }
-    
+    disableRemoveButton() {
+        this._element.querySelector('.elements__reset-button').remove();
+    }
     _setEventListeners() {
-        this._element.querySelector('.elements__like-button').addEventListener('click', this._like);
-        this._element.querySelector('.elements__reset-button').addEventListener('click', this._removeCard);
-        this._imageElement.addEventListener('click', () => {
+        this._elementsCard = this._element.querySelector('.elements__element');
+        this._element.querySelector('.elements__like-button').addEventListener('click', this._likeActive);
+        this._removeButtonIcon = this._element.querySelector('.elements__reset-button');
+        if(this._owner._id === this._ownerId) {
+            this._removeButtonIcon.addEventListener('click', () => { 
+            this._handleCardRemove(this._elementsCard, this._id);
+            });
+        } else {
+            this._removeButtonIcon.remove();
+    }
+
+        this._imageElement.addEventListener('click', (evt) => {
             this._handleCardClick(this._data);
         });
     }
