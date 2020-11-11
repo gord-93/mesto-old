@@ -26,14 +26,6 @@ const initCardElements = new Section(
 '.elements');
 
 
-const renderLoading = (button, isLoading, text) => {
-    if (isLoading) {
-        button.text = textSubmitButton;
-    } else {
-        button.text = text;
-    }
-}
-
 const addNewCard = (data) => {
     const newCard = new Card(data, '#card-template', 
     userInfo.getUserId(),
