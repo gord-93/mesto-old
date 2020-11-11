@@ -7,7 +7,8 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import {editProfileButton, addCardButton,popupTextName, popupTextAbout,
 newCardForm, popupFormProfile, allFormsClasses, avatarEditButton,
-popupTextCard, popupLinkCard, popupAvatarForm, popupAvatarLink} from '../utils/constants.js';
+popupTextCard, popupLinkCard, popupAvatarForm, popupAvatarLink, popupEditSaveButton,
+popupCardSaveButton, popupAvatarSaveButton, popupRemoveSaveButton} from '../utils/constants.js';
 import Api from '../components/Api.js';
 import PopupWithRemove from '../components/PopupWithRemove';
 
@@ -23,6 +24,15 @@ const initCardElements = new Section(
     }
 },
 '.elements');
+
+
+const renderLoading = (button, isLoading, text) => {
+    if (isLoading) {
+        button.text = textSubmitButton;
+    } else {
+        button.text = text;
+    }
+}
 
 const addNewCard = (data) => {
     const newCard = new Card(data, '#card-template', 
@@ -73,47 +83,51 @@ api.promiseAll()
 
 const profileEdit = new PopupWithForm((evt) => {
     evt.preventDefault();
+    api.renderLoading(popupEditSaveButton, true, 'Загрузка...');
     api.setUserAttribute(popupTextName.value, popupTextAbout.value)
         .then((user) => {
             userInfo.setUserInfo({name: user.name, about: user.about, userId: user._id});
         })
         .finally(() => {
-            
+            api.renderLoading(popupEditSaveButton);
             profileEdit.close();
         })
 }, '.popup__profile-edit');
 
 const cardEdit = new PopupWithForm((evt) => {
     evt.preventDefault();
+    api.renderLoading(popupCardSaveButton, true, 'Загрузка...');
     api.addCard(popupTextCard.value, popupLinkCard.value)
         .then((data) => {
             initCardElements.addItem(addNewCard(data));
         })
         .finally(() => {
-            
+            api.renderLoading(popupCardSaveButton, false);
             cardEdit.close();
         })
 }, '.popup__card-form');
 
 const popupAvatar = new PopupWithForm((evt) => {
     evt.preventDefault();
-    api
-    .changeAvatar(popupAvatarLink.value)
+    api.renderLoading(popupAvatarSaveButton, true, 'Сохранение...');
+    api.changeAvatar(popupAvatarLink.value)
     .then((user) => {
         userInfo.setUserAvatar({avatar: user.avatar});
     })
     .finally(() => {
+        api.renderLoading(popupAvatarSaveButton, false);
         popupAvatar.close();
     })
 }, '.popup__edit-avatar');
 
 const popupRemoveCard = new PopupWithRemove((cardId, card, popup) => {
-    api
-    .removeCard(cardId)
+    api.renderLoading(popupRemoveSaveButton, true, 'Удаление...');
+    api.removeCard(cardId)
     .then(() => {
         card.remove();
     })
     .then(() => {
+        api.renderLoading(popupRemoveSaveButton, false);
         popup.close();
     })
 }, '.popup__delete-card'); 

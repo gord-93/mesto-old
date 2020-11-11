@@ -1,6 +1,8 @@
 export {editProfileButton, addCardButton,popupTextName, popupTextAbout,
     newCardForm, popupFormProfile, allFormsClasses, avatarEditButton,
-    popupTextCard, popupLinkCard, popupAvatarForm, popupAvatarLink, fullscreenImage, fullscreenTitle, escButton, initialCards};
+    popupTextCard, popupLinkCard, popupAvatarForm, popupAvatarLink, 
+    fullscreenImage, fullscreenTitle, escButton, initialCards,
+    popupEditSaveButton, popupCardSaveButton, popupAvatarSaveButton, popupRemoveSaveButton};
 
 const profile = document.querySelector('.profile');
 const editProfileButton = profile.querySelector('.profile__edit-button');
@@ -18,6 +20,10 @@ const popupAvatarForm = document.querySelector('.popup__avatar-form');
 const popupTextCard = document.querySelector('.popup__text-name_card');
 const popupLinkCard = document.querySelector('.popup__link');
 const popupAvatarLink = document.querySelector('.popup__avatar-link');
+const popupEditSaveButton = document.querySelector('.popup__save-button');
+const popupCardSaveButton = document.querySelector('.popup__save-button_card');
+const popupAvatarSaveButton = document.querySelector('.popup__save-button_avatar');
+const popupRemoveSaveButton = document.querySelector('.popup__save-button_delete-accept');
 const escButton = 'Escape';
 const initialCards = [];
 

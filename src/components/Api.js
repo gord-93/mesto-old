@@ -32,6 +32,15 @@ export default class Api {
         return Promise.all([this.getUserAttribute(), this.getInitialCards()]);
     }
 
+    renderLoading(button, isLoading, text) {
+        if(isLoading) {
+            this._buttonText = button.textContent;
+            button.textContent = text;
+        } else {
+            button.textContent = this._buttonText;
+        }
+    }
+
     setUserAttribute(inputName, inputAbout) {
         return fetch(this.baseUrl + '/users/me', {
             method: 'PATCH',
