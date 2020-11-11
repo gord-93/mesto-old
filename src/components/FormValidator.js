@@ -6,6 +6,8 @@
         this._inactiveButtonClass = allClasses.inactiveButtonClass;
         this._inputErrorClass = allClasses.inputErrorClass;
         this._errorClass = allClasses.errorClass;
+        this._buttonElement = this._validatedForm.querySelector(this._submitButtonSelector);
+        this._inputList = Array.from(this._validatedForm.querySelectorAll(this._inputSelector));
     };
 
     _formValidation() {
@@ -14,15 +16,13 @@
     };
 
     _activeSubmitButton() {
-        const buttonElement = this._element.querySelector(this._submitButtonSelector);
-        buttonElement.classList.remove(this._inactiveButtonClass);
-        buttonElement.removeAttribute('disabled');
+        this._buttonElement.classList.remove(this._inactiveButtonClass);
+        this._buttonElement.removeAttribute('disabled');
     };
 
     _disabledSubmitButton() {
-        const buttonElement = this._element.querySelector(this._submitButtonSelector);
-        buttonElement.classList.add(this._inactiveButtonClass);
-        buttonElement.setAttribute('disabled', 'true');
+        this._buttonElement.classList.add(this._inactiveButtonClass);
+        this._buttonElement.setAttribute('disabled', 'true');
     };
 
     _showInputError(inputElement) {
@@ -48,8 +48,7 @@
     };
 
     _hasInvalidInput() {
-        const inputList = Array.from(this._element.querySelectorAll(this._inputSelector));
-        return inputList.some((inputElement) => {
+        return this._inputList.some((inputElement) => {
             return !inputElement.validity.valid;
         });
     };
@@ -63,9 +62,8 @@
     };
 
     _setEventListeners() {
-        const inputList = Array.from(this._element.querySelectorAll(this._inputSelector));
         this._toggleButtonState();
-        inputList.forEach((inputElement) => {
+        this._inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
             this._checkInputValidity(inputElement);
             this._toggleButtonState();
@@ -84,8 +82,7 @@
     };
     
     removeErrors() {
-        const inputList = Array.from(this._element.querySelectorAll(this._inputSelector));
-        inputList.forEach((inputElement) => {
+        this._inputList.forEach((inputElement) => {
             this._hideInputError(inputElement);
         });
     };

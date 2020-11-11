@@ -46,13 +46,10 @@ export default class Card {
     }
 
     _checkLiked() {
-        if (this._likeButton.classList.contains('elements__like-button_active')) {
-            return true;
-        }
-        return false;
+        return this._likeButton.classList.contains('elements__like-button_active'); 
     }
 
-    likesScoreDisplay(likes) {
+    showLikesScore(likes) {
         this._likeScorer.textContent = likes.length;
         this._likeActive();
     }
