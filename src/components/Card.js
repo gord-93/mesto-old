@@ -26,25 +26,18 @@ export default class Card {
         this._likeButton = this._element.querySelector('.elements__like-button');
         this._likeScorer = this._element.querySelector('.elements__like-scorer');
         this._imageElement = this._element.querySelector('.elements__image');
-        if (this._likes === undefined) {
-            this._likeScorer.textContent = 0;
-        } else {
-            this._likeScorer.textContent = this._likes.length;
-        }
-        if (this._likes === undefined) {
-            this._likes = [];
-        }
-        this._likesId = [];
-        this._likes.forEach((like) => {
-        this._likesId.push(like._id);
-    })
-        if (this._likesId.includes(this._ownerId)) {
-            this._likeButton.classList.add('elements__like-button_active');
-    }
+        this._likes.forEach((item) => {
+            if (item._id === this._ownerId) {
+                this._likeButton.classList.add('elements__like-button_active');
+            } else {
+                this._likeButton.classList.remove('elements__like-button_active');
+            }
+        })
         this._setEventListeners();
         this._imageElement.src = this.imageLink;
         this._imageElement.alt = this.title;
         this._element.querySelector('.elements__title').textContent = this.title;
+        this._likeScorer.textContent = this._likes.length;
         return this._element;
     }
 
