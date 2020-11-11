@@ -13,63 +13,66 @@ export default class Card {
         this._handleRemoveLikeClick = handleRemoveLikeClick;
         this._likes = data.likes;
     }
+
     _getTemplate() {
         const cardElement = document.querySelector(this._cardSelector)
         .content
         .cloneNode(true);
         return cardElement;
     }
+
     createCard() {
         this._element = this._getTemplate();
         this._likeButton = this._element.querySelector('.elements__like-button');
         this._likeScorer = this._element.querySelector('.elements__like-scorer');
         this._imageElement = this._element.querySelector('.elements__image');
-
         if (this._likes === undefined) {
             this._likeScorer.textContent = 0;
         } else {
             this._likeScorer.textContent = this._likes.length;
         }
-
         if (this._likes === undefined) {
             this._likes = [];
         }
-
         this._likesId = [];
         this._likes.forEach((like) => {
         this._likesId.push(like._id);
     })
-
         if (this._likesId.includes(this._ownerId)) {
             this._likeButton.classList.add('elements__like-button_active');
     }
-
         this._setEventListeners();
         this._imageElement.src = this.imageLink;
         this._imageElement.alt = this.title;
         this._element.querySelector('.elements__title').textContent = this.title;
         return this._element;
     }
+
     _likeActive() {
         this._likeButton.classList.toggle('elements__like-button_active');
     }
+
     _checkLiked() {
         if (this._likeButton.classList.contains('elements__like-button_active')) {
             return true;
         }
         return false;
     }
+
     likesScoreDisplay(likes) {
         this._likeScorer.textContent = likes.length;
         this._likeActive();
     }
+
     removeCard(evt) {
         const element = evt.target.closest('.elements__element');
         element.remove();
     }
+
     disableRemoveButton() {
         this._element.querySelector('.elements__reset-button').remove();
     }
+    
     _setEventListeners() {
         this._elementsCard = this._element.querySelector('.elements__element');
         this._likeButton.addEventListener('click', () => {

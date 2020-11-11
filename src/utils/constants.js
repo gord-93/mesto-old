@@ -1,8 +1,6 @@
-export {fullscreenImage, fullscreenTitle, editProfileButton, addCardButton,popupTextName, popupTextAbout, cardName, cardLink, 
-    newCardForm, popupFormProfile, allFormsClasses, escButton, popupSaveButton, avatarEditButton,
-    popupAvatarForm, resetCardButton, initialCards, profileName, profileAbout, profileAvatar, popupTextCard, popupLinkCard,
-    popupAvatarLink, saveButtonAvatar, popupSaveCard, popupRemoveButton};
-
+export {editProfileButton, addCardButton,popupTextName, popupTextAbout,
+    newCardForm, popupFormProfile, allFormsClasses, avatarEditButton,
+    popupTextCard, popupLinkCard, popupAvatarForm, popupAvatarLink, fullscreenImage, fullscreenTitle, escButton, initialCards};
 
 const profile = document.querySelector('.profile');
 const editProfileButton = profile.querySelector('.profile__edit-button');
@@ -11,25 +9,15 @@ const popup = document.querySelector('.popup');
 const popupForm = popup.querySelector('.popup__form');
 const popupTextName = popupForm.querySelector('.popup__text-name');
 const popupTextAbout = popupForm.querySelector('.popup__text-about');
-const cardName = document.querySelector('.popup__text-name_card');
-const cardLink = document.querySelector('.popup__link');
 const newCardForm = document.querySelector('.popup__newcard-form');
 const popupFormProfile = document.querySelector('.popup__form-profile');
 const fullscreenImage = document.querySelector('.popup__image');
 const fullscreenTitle = document.querySelector('.popup__image-title');
-const popupSaveButton = document.querySelector('.popup__save-button');
 const avatarEditButton = document.querySelector('.profile__edit-icon');
-const saveButtonAvatar = document.querySelector('.popup__save-button_avatar');
 const popupAvatarForm = document.querySelector('.popup__avatar-form');
-const resetCardButton = document.querySelector('.elements__reset-button');
-const profileName = document.querySelector('.profile__name');
-const profileAbout = document.querySelector('.profile__about');
-const profileAvatar = document.querySelector('.profile__avatar');
 const popupTextCard = document.querySelector('.popup__text-name_card');
 const popupLinkCard = document.querySelector('.popup__link');
 const popupAvatarLink = document.querySelector('.popup__avatar-link');
-const popupSaveCard = document.querySelector('.popup__save-button_card');
-const popupRemoveButton = document.querySelector('.popup__save-button_delete-accept');
 const escButton = 'Escape';
 const initialCards = [];
 
