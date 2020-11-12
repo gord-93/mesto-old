@@ -81,13 +81,13 @@ const profileEdit = new PopupWithForm((evt) => {
     api.setUserAttribute(popupTextName.value, popupTextAbout.value)
         .then((user) => {
             userInfo.setUserInfo({name: user.name, about: user.about, userId: user._id});
+            profileEdit.close();
         })
         .catch((err) => {
             console.log(err);
         })
-        .then(() => {
+        .finally(() => {
             api.renderLoading(popupEditSaveButton);
-            profileEdit.close();
         })
 }, '.popup__profile-edit');
 
@@ -97,13 +97,13 @@ const cardEdit = new PopupWithForm((evt) => {
     api.addCard(popupTextCard.value, popupLinkCard.value)
         .then((data) => {
             elements.prepend(addNewCard(data));
+            cardEdit.close();
         })
         .catch((err) => {
             console.log(err);
         })
-        .then(() => {
+        .finally(() => {
             api.renderLoading(popupCardSaveButton, false);
-            cardEdit.close();
         })
 }, '.popup__card-form');
 
@@ -113,13 +113,13 @@ const popupAvatar = new PopupWithForm((evt) => {
     api.changeAvatar(popupAvatarLink.value)
     .then((user) => {
         userInfo.setUserAvatar({avatar: user.avatar});
+        popupAvatar.close();
     })
     .catch((err) => {
         console.log(err);
     })
-    .then(() => {
+    .finally(() => {
         api.renderLoading(popupAvatarSaveButton, false);
-        popupAvatar.close();
     })
 }, '.popup__edit-avatar');
 
